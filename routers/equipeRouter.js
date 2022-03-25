@@ -1,4 +1,5 @@
 const express = require("express");
+const equipeModel = require("../Models/equipeModel");
 
 const equipeRouter = express.Router();
 
@@ -7,7 +8,14 @@ equipeRouter.use("/:nom", (req, res) => {
 });
 
 equipeRouter.use("/", (req, res) => {
-  console.log(req.params);
+  let teams = [];
+  equipeModel
+    .find()
+    .exec()
+    .then((data) => {
+      teams.push(data);
+    });
+  console.log(teams);
   res.render("equipes/index.html.twig");
 });
 
