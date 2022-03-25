@@ -5,13 +5,16 @@ const server = express();
 const morgan = require("morgan");
 
 const globalRouter = require("./routers/globalRouter");
+const equipeRouter = require("./routers/equipeRouter");
 
 const port = 3000;
 
 server.use(express.static("public"));
 server.use(morgan("dev")); // Log serveur détaillés.
 
-// Je délègue la gestion de ces routes démarrant par "/" à un global routeur afin de ne pas surcharger mon fichier server par la suite.
+// Je délègue la gestion des routes à différents routeurs afin de ne pas surcharger mon fichier server par la suite.
+server.use("/equipes", equipeRouter);
+
 server.use("/", globalRouter);
 
 // Les routes inconnues finiront ici, je créer une erreur et je la passe à mon prochain middleware avec next();
@@ -31,5 +34,3 @@ server.listen(port, (req, res) => {
   console.log("Serveur bibliothèque lancé");
   console.log(req);
 });
-
-const distDir = "../src/";

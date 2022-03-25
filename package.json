@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sofyanne/bibliotheque_DFSR#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "twig": "^1.15.4"
   }
 }

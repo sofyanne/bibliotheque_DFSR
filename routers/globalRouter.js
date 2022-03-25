@@ -1,8 +1,9 @@
 const express = require("express");
+const twig = require("twig");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("<h1>Ici c'est le global routeur </h1>");
+  res.render("accueil.html.twig");
 });
 module.exports = router;
