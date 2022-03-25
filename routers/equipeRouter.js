@@ -7,16 +7,13 @@ equipeRouter.use("/:nom", (req, res) => {
   res.render("equipes/equipe.html.twig");
 });
 
-equipeRouter.use("/", (req, res) => {
-  let teams = [];
+equipeRouter.get("/", (req, res) => {
   equipeModel
     .find()
     .exec()
     .then((data) => {
-      teams.push(data);
+      res.render("equipes/index.html.twig", { teams: data });
     });
-  console.log(teams);
-  res.render("equipes/index.html.twig");
 });
 
 module.exports = equipeRouter;

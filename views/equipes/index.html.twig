@@ -2,4 +2,19 @@
 
 {% block content %}
 	<h1>Liste des équipes</h1>
+
+
+	{% for team in teams %}
+
+		<h5>{{team.name}}</h5>
+		<p>{{team.manager}}</p>
+		{% for driver in team.drivers %}
+			<p>{{driver.firstname}}
+				{{driver.lastname}}</p>
+
+		{% endfor %}
+		<p>{{team.car}}</p>
+
+
+	{% endfor %}
 {% endblock %}
