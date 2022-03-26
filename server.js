@@ -5,12 +5,6 @@ const server = express();
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-mongoose
-  .connect(
-    "mongodb+srv://nodejsf1:eDTQxFMxu7kOnWak@cluster0.mypts.mongodb.net/nodejsf1project?retryWrites=true&w=majority"
-  ) // Ici si la connection ne s'etablie pas je capture l'erreur avec catch puisque mongoose.connect est une promise.
-  .catch((error) => console.log("La connexion à la base de données à échoué"));
-
 const globalRouter = require("./routers/globalRouter");
 const equipeRouter = require("./routers/equipeRouter");
 
