@@ -3,16 +3,17 @@ const equipeModel = require("../Models/equipeModel");
 
 const equipeRouter = express.Router();
 
-equipeRouter.use("/:id", (req, res) => {
+equipeRouter.use("/:id", (req, res, next) => {
   res.render("equipes/equipe.html.twig");
 });
 
-equipeRouter.get("/", (req, res) => {
+equipeRouter.get("/", (req, res, next) => {
+  
   equipeModel
     .find()
     .exec()
     .then((data) => {
-      res.render("equipes/index.html.twig", { teams: data });
+      res.status(200).json(data);
     });
 });
 
