@@ -14,7 +14,9 @@ server.use(express.static("public"));
 server.use(morgan("dev")); // Log serveur détaillés.
 
 mongoose
-  .connect()
+  .connect(
+    "mongodb+srv://test:hTox3kmAtcwabkVd@cluster0.mypts.mongodb.net/nodejsf1project?retryWrites=true&w=majority"
+  )
   .then(() => console.log("Connexion à la bdd réussie")) // Ici si la connection ne s'etablie pas je capture l'erreur avec catch puisque mongoose.connect est une promise.
   .catch((error) =>
     console.log("La connexion à la base de données à échoué" + error)

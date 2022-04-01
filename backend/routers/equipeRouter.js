@@ -3,7 +3,7 @@ const equipeModel = require("../Models/equipeModel");
 
 const equipeRouter = express.Router();
 
-equipeRouter.use("/:nom", (req, res) => {
+equipeRouter.use("/:id", (req, res) => {
   res.render("equipes/equipe.html.twig");
 });
 
