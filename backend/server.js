@@ -42,7 +42,7 @@ server.use((error, req, res) => {
 
 mongoose
   .connect(
-    ""
+    "mongodb+srv://test:T0KtOSSQz5NQiauU@cluster0.mypts.mongodb.net/nodejsf1project?retryWrites=true&w=majority"
   )
   .then(() => {
     server.listen(port);

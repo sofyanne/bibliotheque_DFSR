@@ -36,6 +36,21 @@
 		</header>
 		<main class="main_body"> 
             <div class="list-equipes"></div>
+
+            <form id="new-team" action="http://localhost:8080/equipes/create" method="post">
+                <label for="name">Nom équipe</label>
+                <input type="text" name="name" id="name">
+
+                <label for="car">Nom équipe</label>
+                <input type="text" name="car" id="car">
+
+                <label for="manager">Nom équipe</label>
+                <input type="text" name="manager" id="manager">
+
+                <button  type="submit">Valider</button>
+
+
+            </form>
 			</main>
             <script src="./script.js"></script>
 		</body>
