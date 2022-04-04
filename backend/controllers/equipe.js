@@ -27,29 +27,29 @@ exports.getTeam = (req, res, next) => {
 };
 
 exports.postTeam = (req, res, next) => {
-    console.log(req.body.name); 
-    return;
-    // const newTeam = new EquipeModel({
-    //     name: req.body.name,
-    //     car: req.body.car,
-    //     drivers: [
-    //         {
-    //             firstname: "test1",
-    //             lastname: "Test1"
-    //         },
-    //         {
-    //             firstname: "test2",
-    //             lastname: "Test2"
-    //         }
-    //     ],
-    //     manager: req.body.manager
-    // });
+    console.log(req.body);
 
-    // newTeam.save().then(result => {
-    //     res.status(201).json({
-    //         message: "Equipe créée avec succès!",
-    //         team: result,
-    //         createdAt: new Date()
-    //     });
-    // }).catch(error => console.log(error));
+     const newTeam = new EquipeModel({
+         name: req.body.name,
+         car: req.body.car,
+         drivers: [
+             {
+                 firstname: "test1",
+                 lastname: "Test1"
+             },
+             {
+                 firstname: "test2",
+                 lastname: "Test2"
+             }
+         ],
+         manager: req.body.manager
+     });
+
+     newTeam.save().then(result => {
+         res.status(201).json({
+             message: "Equipe créée avec succès!",
+             team: result,
+             createdAt: new Date()
+         });
+     }).catch(error => console.log(error));
 };
