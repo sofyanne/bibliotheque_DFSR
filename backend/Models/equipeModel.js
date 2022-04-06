@@ -6,7 +6,7 @@ const equipeSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  manager: {
+  image: {
     type: String,
     require: true,
   },

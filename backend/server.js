@@ -1,17 +1,44 @@
-// "use strict";
-
+const path = require("path");
 const express = require("express");
-const server = express();
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const multer = require("multer");
+
+const port = 8080;
+
 
 const globalRouter = require("./routers/globalRouter");
 const equipeRouter = require("./routers/equipeRouter");
 
-const port = 8080;
+
+
+const server = express();
+
+// Ici je configure ou les fichiers seront stockés et sous quel nom.
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + "-" + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/png" ||
+      file.mimetype === "image/jpg" ||
+      file.mimetype === "image/jpeg"
+    ){
+      console.log("Bon format");
+      cb(null, true);
+    } else {
+      cb(null, false);
+    }
+};
 
 server.use(express.json());
-server.use("/public", express.static("public"));
+server.use(multer({storage: fileStorage, fileFilter: fileFilter}).single("image"))
+server.use("/images", express.static(path.join(__dirname, "images")));
 server.use(morgan("dev")); // Log serveur détaillés.
 
 // Ici j'autorise d'autres domaines à requeter avec différentes méthodes, ainsi qu'à paramétrer les headers.  
@@ -25,11 +52,11 @@ server.use((req, res, next) => {
 // Je délègue la gestion des routes à différents routeurs afin de ne pas surcharger mon fichier server par la suite.
 server.use("/equipes", equipeRouter);
 
-server.use("/", globalRouter);
+
 
 // Les routes inconnues finiront ici, je créer une erreur et je la passe à mon prochain middleware avec next();
 server.use((req, res, next) => {
-  const error = new Error("<h1>La page n'existe pas</h1>");
+  const error = new Error("La page n'existe pas.");
   error.status = 404;
   next(error);
 });

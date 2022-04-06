@@ -1,20 +1,15 @@
 const express = require("express");
-const equipeModel = require("../Models/equipeModel");
+const equipeController = require("../controllers/equipe");
+
 
 const equipeRouter = express.Router();
 
-equipeRouter.use("/:id", (req, res, next) => {
-  res.render("equipes/equipe.html.twig");
-});
+equipeRouter.post("/create", equipeController.postTeam);
 
-equipeRouter.get("/", (req, res, next) => {
-  
-  equipeModel
-    .find()
-    .exec()
-    .then((data) => {
-      res.status(200).json(data);
-    });
-});
+equipeRouter.get("/:id", equipeController.getTeam);
+
+
+equipeRouter.get("/", equipeController.getTeams);
+
 
 module.exports = equipeRouter;
