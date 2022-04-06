@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&display=swap" rel="stylesheet">
 
-		<link rel="stylesheet" href="./assets/css/main.css">
+		<link rel="stylesheet" href="../css/main.css">
 		
 		<title>
 			
@@ -20,11 +20,11 @@
 			<nav class="header_nav">
 				<ul class="header_nav-menu">
 					<li class="nav-btn">
-						<a href="./index.html">ACCUEIL</a>
+						<a href="../../index.html">ACCUEIL</a>
 					</li>
 
 					<li class="nav-btn">
-						<a href="./assets/pages/equipes.html">EQUIPES</a>
+						<a href="./equipes.html">EQUIPES</a>
 					</li>
 
 					<li class="nav-btn">
@@ -36,7 +36,23 @@
 		</header>
 		<main class="main_body"> 
 			<h1>Equipe F1</h1>
-            
-            <script type="module" src="./assets/js/script.js"></script>
+            <div class="list-equipes"></div>
+
+            <form id="new-team" action="" method="post" enctype="multipart/form-data">
+                <label for="name">Nom équipe</label>
+                <input type="text" name="name" id="name">
+
+                <label for="car">Voiture</label>
+                <input type="text" name="car" id="car">
+
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image">
+
+                <button class="btn-primary" type="submit">Valider</button>
+
+
+            </form>
+			</main>
+            <script type="module" src="../js/script.js"></script>
 		</body>
 	</html>
