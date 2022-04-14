@@ -1,8 +1,6 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: 'Titillium Web', sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 header {
     height: 150px;
