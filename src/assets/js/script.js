@@ -30,3 +30,5 @@ request("http://localhost:8080/equipes")
     template("div", listEquipes, result);
   })
   .catch((error) => console.log(error.message));
+
+

@@ -13,12 +13,12 @@ export async function request(ressource, options = {}) {
 export function template(elt, target, data) {
   for (const team of data) {
     const newElt = document.createElement(elt);
-    newElt.classList = "flex-col justify-between bg-white shadow-xl w-60 h-96 px-5 mx-5 my-5";
+    newElt.classList = "card flex-col justify-between bg-white shadow-xl w-60 h-96 px-5 mx-5 my-5";
     newElt.innerHTML = `
     
             <h5 class="text-center font-medium my-5">${team.name}</h5>
            
-            <img class="mb-5" src="http://127.0.0.1:8080/${team.image}" alt=${
+            <img class="mb-5 mx-auto h-32" src="http://127.0.0.1:8080/${team.image}" alt=${
       team.name
     }>      
           <div class="flex-col justify-end items-center">
@@ -37,12 +37,14 @@ export function template(elt, target, data) {
               .join("")}
           </div>
            <div class="flex justify-around items-center my-5">
-            <button class="bg-yellow-400 hover:bg-yellow-500 h-10 w-20">Update</button>
-            <button class="bg-red-400 hover:bg-red-500 h-10 w-20">Delete</button>
-          </div>
-            
-       
-     `;
+            <button id=${
+              team._id
+            } class="bg-yellow-400 hover:bg-yellow-500 h-10 w-20">Update</button>
+            <button id=${
+              team._id
+            } class="btn-delete bg-red-400 hover:bg-red-500 h-10 w-20">Delete</button>
+          </div>          
+                     `;
     target.append(newElt);
   }
 }
