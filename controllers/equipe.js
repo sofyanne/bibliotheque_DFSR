@@ -42,7 +42,7 @@ exports.getTeam = (req, res, next) => {
 
 exports.postTeam = (req, res, next) => {
   
-  console.log(req.file);
+
   if (!req.file) {
     const error = new Error("L'image est manquante");
     error.statusCode = 422;
