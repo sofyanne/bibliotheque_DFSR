@@ -58,7 +58,7 @@ export function detailsTemplate(elt, target, data) {
             
             <button id=${
               data._id
-            } class="btn-Update bg-yellow-400 hover:bg-yellow-500 h-10 w-20 mb-10">Update</button>
+            } class="btn-update bg-yellow-400 hover:bg-yellow-500 h-10 w-20 mb-10">Update</button>
           </div>          
                      `;
   target.append(newElt);
