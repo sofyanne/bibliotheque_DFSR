@@ -29,7 +29,7 @@ exports.getTeam = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      
+
       res.status(200).json(data);
     })
     .catch((error) => {
@@ -41,8 +41,6 @@ exports.getTeam = (req, res, next) => {
 };
 
 exports.postTeam = (req, res, next) => {
-  
-  console.log(req.file);
   if (!req.file) {
     const error = new Error("L'image est manquante");
     error.statusCode = 422;
@@ -74,6 +72,22 @@ exports.postTeam = (req, res, next) => {
         message: "Equipe créée avec succès!",
         team: result,
         createdAt: new Date(),
+      });
+    })
+    .catch((error) => {
+      if (!error.statusCode) {
+        error.statusCode = 500;
+      }
+      next(error);
+    });
+};
+
+exports.deleteTeam = (req, res, next) => {
+  EquipeModel.deleteOne({ _id: req.params.id })
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        message: "Equipe supprimée avec succès!",
       });
     })
     .catch((error) => {
