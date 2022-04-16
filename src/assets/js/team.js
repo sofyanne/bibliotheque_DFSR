@@ -1,8 +1,9 @@
-import { request } from "./utils.js";
+import { request, detailsTemplate } from "./utils.js";
 
-
+const target = document.querySelector(".team");
+const id = localStorage.getItem("id")
 const equipe = await request(
-  `http://localhost:8080/equipes/623dc4b5c4ae8b325debf693`
+  `http://localhost:8080/equipes/${id}`
 );
 
-console.log(equipe);
+detailsTemplate("div", target, equipe);
