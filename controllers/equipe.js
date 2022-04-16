@@ -54,12 +54,12 @@ exports.postTeam = (req, res, next) => {
     car: req.body.car,
     drivers: [
       {
-        firstname: "test1",
-        lastname: "Test1",
+        firstname: req.body.driver1firstname,
+        lastname: req.body.driver1lastname,
       },
       {
-        firstname: "test2",
-        lastname: "Test2",
+        firstname: req.body.driver2firstname,
+        lastname: req.body.driver2lastname,
       },
     ],
     image: imageUrl,
@@ -72,6 +72,39 @@ exports.postTeam = (req, res, next) => {
         message: "Equipe créée avec succès!",
         team: result,
         createdAt: new Date(),
+      });
+    })
+    .catch((error) => {
+      if (!error.statusCode) {
+        error.statusCode = 500;
+      }
+      next(error);
+    });
+};
+
+exports.updateTeam = (req, res, next) => {
+  const imageUrl = req.file.path;
+  EquipeModel.updateOne({ _id: req.params.id}, {
+    
+    name: req.body.name,
+    car: req.body.car,
+    drivers: [
+      {
+        firstname: req.body.driver1firstname,
+        lastname: req.body.driver1lastname,
+      },
+      {
+        firstname: req.body.driver2firstname,
+        lastname: req.body.driver2lastname,
+      },
+    ],
+    image: imageUrl,
+  
+  })
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        message: "Equipe supprimée avec succès!",
       });
     })
     .catch((error) => {

@@ -7,6 +7,7 @@ const equipeRouter = express.Router();
 equipeRouter.post("/create", equipeController.postTeam);
 equipeRouter.delete("/:id", equipeController.deleteTeam);
 
+equipeRouter.patch("/:id", equipeController.updateTeam);
 equipeRouter.get("/:id", equipeController.getTeam);
 
 

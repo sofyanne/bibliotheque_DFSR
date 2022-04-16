@@ -28,43 +28,92 @@
       </nav>
     </header>
     <main>
-      <h1 class="text-6xl font-semibold text-center mb-10">Team list</h1>
+      <h1 class="text-6xl font-semibold text-center mb-10">Team Details</h1>
 
       <div
         class="team w-full h-full flex-col justify-center items-center mx-auto mb-10"
       >
-    <div class="flex flex-col items-center justify-between mx-auto">
-		
-        <form
-          class=" flex flex-col h-80 w-80 justify-between px-5 py-5 bg-white shadow-xl"
-          id="new-team"
-          action=""
-          method="post"
-          enctype="multipart/form-data"
-		  
-        >
-          <h5 class="text-center  text-lg font-medium">Add Team</h5>
-          <div class="flex flex-col">
-            <label for="name">Team name</label>
-            <input class="input" type="text" name="name" id="name" />
-          </div>
+        <div class="flex flex-col items-center justify-between mx-auto">
+          <form
+            class="hidden flex flex-col h-full w-80 justify-between px-5 py-5 bg-white shadow-xl"
+            id="update-team"
+            action=""
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <h5 class="text-center text-lg font-medium">Add Team</h5>
+            <div class="flex flex-col">
+              <label for="name">Team name</label>
+              <input class="input" type="text" name="name" id="name" />
+            </div>
 
-          <div class="flex flex-col">
-            <label for="car">Car</label>
-            <input class="input" type="text" name="car" id="car" />
-          </div>
+            <div class="flex flex-col">
+              <label for="car">Car</label>
+              <input class="input" type="text" name="car" id="car" />
+            </div>
 
-          <div class="flex flex-col">
-            <label for="image">Image</label>
-            <input type="file" name="image" id="image" class="block w-full
-            text-sm text-slate-500 file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0 file:text-sm file:font-semibold
-            file:bg-slate-50 file:text-slate-700 hover:file:bg-slate-100">
-          </div>
+            <div class="flex flex-col mb-5">
+              <label for="manager">Manager</label>
+              <input class="input" type="text" name="manager" id="manager" />
+            </div>
 
-          <button class="bg-green-400 hover:bg-green-500 h-10 w-20" type="submit">Submit</button>
-        </form>
-      </div></div>
+            <div class="flex justify-between">
+              <div class="flex flex-col border-2 w-2/5 mb-5">
+                <p class="text-center">Driver 1</p>
+                <label for="driver1firstname">Firstname</label>
+                <input
+                  class="input"
+                  type="text"
+                  name="driver1firstname"
+                  id="driver1firstname"
+                />
+                <label for="driver1lastname">Lastname</label>
+                <input
+                  class="input"
+                  type="text"
+                  name="driver1lastname"
+                  id="driver1lastname"
+                />
+              </div>
+
+              <div class="flex flex-col border-2 w-2/5 mb-5">
+                <p class="text-center">Driver 2</p>
+                <label for="driver2firstname">Firstname</label>
+                <input
+                  class="input"
+                  type="text"
+                  name="driver2firstname"
+                  id="driver2firstname"
+                />
+                <label for="driver2lastname">Lastname</label>
+                <input
+                  class="input"
+                  type="text"
+                  name="driver2lastname"
+                  id="driver2lastname"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col">
+              <label for="image">Image</label>
+              <input
+                type="file"
+                name="image"
+                id="image"
+                class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-50 file:text-slate-700 hover:file:bg-slate-100"
+              />
+            </div>
+
+            <button
+              class="bg-green-400 hover:bg-green-500 h-10 w-20"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </main>
     <script type="module" src="../js/team.js"></script>
   </body>
