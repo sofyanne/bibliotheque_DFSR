@@ -7,7 +7,7 @@ const multer = require("multer");
 const port = 8080;
 
 
-const globalRouter = require("./routers/globalRouter");
+
 const equipeRouter = require("./routers/equipeRouter");
 
 
@@ -50,7 +50,7 @@ server.use((req, res, next) => {
 });
 
 // Je délègue la gestion des routes à différents routeurs afin de ne pas surcharger mon fichier server par la suite.
-server.use("/equipes", equipeRouter);
+server.use("/", equipeRouter);
 
 
 
@@ -69,7 +69,7 @@ server.use((error, req, res) => {
 
 mongoose
   .connect(
-    ""
+    "mongodb+srv://test:T0KtOSSQz5NQiauU@cluster0.mypts.mongodb.net/nodejsf1project?retryWrites=true&w=majority"
   )
   .then(() => {
     server.listen(port);

@@ -12,10 +12,10 @@ addTeamForm.addEventListener("click", (e) => {
 
 btnNewTeam.addEventListener("submit", (e) => {
   e.preventDefault();
+  
 
   const formData = new FormData(e.currentTarget);
-  
-  request("http://localhost:8080/equipes/create", {
+  request("http://localhost:8080/create", {
     method: "POST",
     body: formData,
   });
@@ -23,13 +23,13 @@ btnNewTeam.addEventListener("submit", (e) => {
   window.location.href = "http://localhost:5500/src/index.html";
 });
 
-const equipes = await request("http://localhost:8080/equipes");
+const equipes = await request("http://localhost:8080");
 cardTemplate("div", listEquipes, equipes);
 
 
 listEquipes.addEventListener("click", (e) => {
   if (e.target.innerText === "Delete") {
-    request(`http://localhost:8080/equipes/${e.target.id}`, {
+    request(`http://localhost:8080/${e.target.id}`, {
       method: "DELETE",
     });
      window.location.href = "http://localhost:5500/src/index.html";

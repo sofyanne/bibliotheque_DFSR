@@ -1,9 +1,9 @@
 import { request, detailsTemplate } from "./utils.js";
 
 const target = document.querySelector(".team");
-const id = localStorage.getItem("id")
+const id = localStorage.getItem("id");
 const equipe = await request(
-  `http://localhost:8080/equipes/${id}`
+  `http://localhost:8080/${id}`
 );
 
 detailsTemplate("div", target, equipe);
@@ -20,7 +20,7 @@ submitUpdate.addEventListener("submit", (e) => {
 
   const formData = new FormData(e.currentTarget);
 
-  request(`http://localhost:8080/equipes/${id}`, {
+  request(`http://localhost:8080/${id}`, {
     method: "PATCH",
     body: formData,
   });
